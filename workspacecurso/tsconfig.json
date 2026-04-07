@@ -28,6 +28,12 @@
     },
     {
       "path": "./projects/02_pagina_datos/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/03_calculadora_historico/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/03_calculadora_historico/tsconfig.spec.json"
     }
   ]
 }

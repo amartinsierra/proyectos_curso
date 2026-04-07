@@ -1,0 +1,28 @@
+Número 1: <input type="number" [ngModel]="num1()" (ngModelChange)="num1.set($event)"><br><br>
+Número 2: <input type="number" [ngModel]="num2()" (ngModelChange)="num2.set($event)"><br><br>
+<input type="button" (click)="sumar()" value="Sumar">
+<input type="button" (click)="multiplicar()" value="Multiplicar"><br><br>
+<h2>{{resultado()}}</h2>
+<input type="button" value="Histórico" (click)="showHistorico()"><br><br>
+<!--
+<div *ngIf="show()">
+  <h1>Histórico de operaciones</h1>
+  <ul>
+    <li *ngFor="let s of historico()">{{s}}</li>
+  </ul>
+</div>
+-->
+@if(show()){
+  <h1>Histórico de operaciones</h1>
+  <table border="1">
+    <tr><th>Tipo operación</th><th>Expresión</th><th>Valor</th></tr>
+    @for(s of historico();track s){
+      <tr>
+          <td>{{s.tipo}}</td>
+          <td>{{s.expresion}}</td>
+          <td>{{s.valor}}</td>
+      </tr>
+
+    }
+  </table>
+}
