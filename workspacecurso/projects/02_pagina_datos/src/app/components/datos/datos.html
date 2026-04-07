@@ -1,0 +1,4 @@
+Introduce nombre:<input type="text" [ngModel]="nombre()" (ngModelChange)="nombre.set($event)"><br><br>
+Introduce edad:<input type="number" [ngModel]="edad()" (ngModelChange)="edad.set($event)"><br><br>
+<input type="button" (click)="procesar()" value="mostrar"><br><br>
+<h3>{{mensaje()}}</h3>
