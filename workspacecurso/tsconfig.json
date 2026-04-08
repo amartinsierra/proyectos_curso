@@ -40,6 +40,24 @@
     },
     {
       "path": "./projects/04_agenda/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/05_agenda_servicio/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/05_agenda_servicio/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/06_agenda_servicio_observable/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/06_agenda_servicio_observable/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/07_buscador/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/07_buscador/tsconfig.spec.json"
     }
   ]
 }
