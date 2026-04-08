@@ -1,0 +1,32 @@
+<div class="formulario">
+  <div>
+
+      Seleccione temática:<br>
+      <select [ngModel]="tematica()" (ngModelChange)="tematica.set($event)" (change)="buscar()">
+        <option>--Tematica--</option>
+        @for(s of tematicas();track s){
+          <option value="{{s}}">{{s}}</option>
+        }
+
+      </select>
+      <br>
+      <br>
+      <br>
+      @if(resultados().length>0){
+        <table border="1">
+          <tr><th>Url</th><th>Tematica</th><th>Descripcion</th><th>Fecha</th></tr>
+          @for(r of resultados();track r){
+            <tr>
+              <td><a href="{{r.url}}">{{r.url}}</a></td>
+              <td>{{r.tematica|uppercase}}</td>
+              <td>{{r.descripcion}}</td>
+              <td>{{r.fecha|date:'dd/MM/yyyy'}}</td>
+            </tr>
+          }
+
+        </table>
+      }
+
+  </div>
+</div>
+

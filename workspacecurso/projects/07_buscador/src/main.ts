@@ -1,5 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
-import { App } from './app/app';
+import { BuscadorComponent } from './app/components/buscador/buscador.component';
 
-bootstrapApplication(App, appConfig).catch((err) => console.error(err));
+
+bootstrapApplication(BuscadorComponent, appConfig).catch((err) => console.error(err));
