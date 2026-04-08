@@ -24,7 +24,7 @@ export class Calculadora {
     this.resultado.set(r)
   }
   multiplicar(){
-    let r:string=this.num1()+"X"+this.num2()+"="+(this.num1()*this.num2());
+    let r:string=`${this.num1()}X${this.num2()}=${this.num1()*this.num2()}`;
     this.historico.update(lst=>[...lst,new Operacion("multiplicacion",this.num1()+"X"+this.num2(),(this.num1()*this.num2()))]);
     this.resultado.set(r)
   }

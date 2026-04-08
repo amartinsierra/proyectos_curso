@@ -1,0 +1,17 @@
+Introduce nombre:<input type="text" [ngModel]="contacto().nombre" (ngModelChange)="contacto.update(c => ({ ...c, nombre: $event }))"><br><br>
+Introduce teléfono:<input type="text" [ngModel]="contacto().telefono" (ngModelChange)="contacto.update(c => ({ ...c, telefono: $event }))"><br><br>
+Introduce edad:<input type="text" [ngModel]="contacto().edad" (ngModelChange)="contacto.update(c => ({ ...c, edad: $event }))"><br><br>
+<input type="button" value="Guardar" (click)="agregarContacto()"><br>
+<p *ngIf="mensaje">{{mensaje()}}</p>
+<br>
+<input type="button" value="Mostrar" (click)="mostrarTodos()">
+<br>
+<div *ngIf="show()">
+  <h2>Mi agenda</h2>
+  <table border="1">
+    <tr><th>Nombre</th><th>Teléfono</th><th>Edad</th></tr>
+    <tr *ngFor="let c of contactos()">
+      <td>{{c.nombre}}</td><td>{{c.telefono}}</td><td>{{c.edad}}</td>
+    </tr>
+  </table>
+</div>
