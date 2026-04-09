@@ -21,5 +21,11 @@ export class Consulta {
     });
   }
 
+  eliminar(url:string){
+    this.itemsService.deleteByUrl(url).subscribe({
+      next:data=>alert(`se elimino ${data.url} de ${data.tematica}`),
+      error:err=>alert(`${err}. No se pudo eliminar`)
+    });
+  }
 
 }
