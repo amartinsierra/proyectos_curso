@@ -493,6 +493,67 @@
           "builder": "@angular/build:unit-test"
         }
       }
+    },
+    "10_buscador_rest": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/10_buscador_rest",
+      "sourceRoot": "projects/10_buscador_rest/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/10_buscador_rest/src/main.ts",
+            "tsConfig": "projects/10_buscador_rest/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/10_buscador_rest/public"
+              }
+            ],
+            "styles": ["projects/10_buscador_rest/src/styles.css"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "10_buscador_rest:build:production"
+            },
+            "development": {
+              "buildTarget": "10_buscador_rest:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
     }
   }
 }

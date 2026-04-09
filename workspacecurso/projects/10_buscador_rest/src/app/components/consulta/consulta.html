@@ -1,0 +1,20 @@
+<div class="container">
+    Introduce temática:
+    <input type="text" [ngModel]="tematicaSel()" (ngModelChange)="tematicaSel.set($event)"><br><br>
+    <input type="button" value="Resultados" (click)="buscar()">
+    <br>
+      <br>
+      @if(items().length>0){
+        <table border="1">
+          <tr><th>Url</th><th>Temática</th><th>Descripción</th></tr>
+          @for(r of items();track r){
+            <tr>
+              <td>{{r.url}}</td>
+              <td>{{r.tematica}}</td>
+              <td>{{r.descripcion}}</td>
+            </tr>
+          }
+        </table>
+      }
+
+</div>

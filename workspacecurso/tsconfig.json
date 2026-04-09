@@ -70,6 +70,12 @@
     },
     {
       "path": "./projects/09_paises/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/10_buscador_rest/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/10_buscador_rest/tsconfig.spec.json"
     }
   ]
 }
