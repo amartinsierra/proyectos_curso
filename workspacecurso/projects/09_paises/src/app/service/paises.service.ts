@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { filter, map, Observable } from 'rxjs';
+import { filter, map, Observable, shareReplay } from 'rxjs';
 import { Pais } from '../model/Pais';
 
 @Injectable({
@@ -12,11 +12,11 @@ export class PaisesService {
 
   getContinentes():Observable<Set<string>>{
     return this.http.get<Pais[]>(this.url)
-            .pipe(map(ar=>new Set(ar.map(a=>a.region))));
+            .pipe(map(ar=>new Set(ar.map(a=>a.region))),shareReplay(5));
   }
 
   getPaises():Observable<Pais[]>{
-    
+
     /*return this.http.get<Pais[]>(this.url).pipe(
       map(ar=>ar.filter(e=>parseInt(e.population)>10000000))
     );*/
@@ -24,7 +24,7 @@ export class PaisesService {
   }
   getPaisesContinente(continente:string):Observable<Pais[]>{
     return this.http.get<Pais[]>(this.url).pipe(
-      map(ar=>ar.filter(e=>e.region==continente))
+      map(ar=>ar.filter(e=>e.region==continente)),shareReplay(1)
     );
   }
 
