@@ -1,0 +1,38 @@
+<div class="container">
+  <form [formGroup]="formClients" (ngSubmit)="procesar()">
+    <label>
+      Usuario:<input type="text" formControlName="usuario">
+    </label>
+    <br>
+    @if(formClients.get("usuario")&&error){
+      @if(formClients.get("usuario").hasError("required")){
+        <span >El nombre de usuario es obligatorio.</span>
+      }
+    }
+    <br>
+    <label>
+      Password:<input type="password" formControlName="password">
+    </label>
+    <br>
+    <label>
+      Email:<input type="text" formControlName="email">
+    </label>
+    <br>
+    <label>
+      Teléfono:<input type="text" formControlName="telefono">
+    </label>
+    <br>
+    <label>
+      Uso profesional:<input type="checkbox" formControlName="profesional">
+    </label>
+    <br>
+    <label>
+      Instagram:<input type="text" formControlName="instagram">
+    </label>
+    <br>
+
+    <input type="submit" value="Registrar">
+  </form>
+
+
+</div>

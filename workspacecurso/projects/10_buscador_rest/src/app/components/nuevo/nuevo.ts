@@ -11,8 +11,13 @@ import { FormsModule } from '@angular/forms';
 })
 export class Nuevo {
   item=signal<Item>({url:"",tematica:"",descripcion:""});
+  error:boolean=false;
   constructor(private itemsService:ItemsService){}
-  alta():void{
+  alta(form:any):void{
+    if(form.invalid){
+      this.error=true;
+      return;
+    }
     this.itemsService.save(this.item()).subscribe({
       next:r=>alert("Añadido correctamente"),
       error:e=>alert("No se pudo añadir")

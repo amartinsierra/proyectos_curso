@@ -1,6 +1,29 @@
 <div class="container">
-  Introduce url:<input type="text" [ngModel]="item().url" (ngModelChange)="item.update(c => ({ ...c, url: $event }))"><br><br>
-  Introduce temática:<input type="text" [ngModel]="item().tematica" (ngModelChange)="item.update(c => ({ ...c, tematica: $event }))"><br><br>
-  Introduce descripción:<input type="text" [ngModel]="item().descripcion" (ngModelChange)="item.update(c => ({ ...c, descripcion: $event }))"><br><br>
-  <input type="button" value="Guardar" (click)="alta()"><br>
+  <form #form="ngForm" (ngSubmit)="alta(form)">
+    Introduce url:<input type="text" name="url" required #url="ngModel" [ngModel]="item().url" (ngModelChange)="item.update(c => ({ ...c, url: $event }))"><br>
+    @if(url.invalid&&error){
+      @if(url.errors?.['required']){
+        <small>La URL es obligatoria.</small>
+      }
+    }
+    <br>
+    Introduce temática:<input type="text" name="tematica" required #tematica="ngModel" [ngModel]="item().tematica" (ngModelChange)="item.update(c => ({ ...c, tematica: $event }))"><br>
+    @if(tematica.invalid&&error){
+      @if(tematica.errors?.['required']){
+        <small>La temática es obligatoria.</small>
+      }
+    }
+    <br>
+    Introduce descripción:<input type="text" name="descripcion" required minlength="6" #descripcion="ngModel" [ngModel]="item().descripcion" (ngModelChange)="item.update(c => ({ ...c, descripcion: $event }))"><br>
+    @if(descripcion.invalid&&error){
+      @if(descripcion.errors?.['required']){
+        <small>La descripción es obligatoria.</small>
+      }
+      @if(descripcion.errors?.['minlength']){
+        <small>La descripción debe tener al menos 6 caracteres .</small>
+      }
+    }
+    <br>
+    <input type="submit" value="Guardar"><br>
+  </form>
 </div>
