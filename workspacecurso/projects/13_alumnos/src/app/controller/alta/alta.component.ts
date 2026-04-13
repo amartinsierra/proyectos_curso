@@ -5,6 +5,8 @@ import { AlumnosService } from '../../service/alumnos.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { validadorCurso } from '../functions/ValidarCurso';
 import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { Dialogo } from '../../ui/dialogo/dialogo';
 
 @Component({
   selector: 'app-alta',
@@ -22,10 +24,10 @@ export class AltaComponent implements OnInit{
     nota: new FormControl('', [Validators.required, Validators.min(1),Validators.max(10)]),
     curso: new FormControl('', [Validators.required,validadorCurso])
   });
-  submitted:boolean=false;
+
 
   alumno:Alumno={"nombre":"","email":"","curso":"","nota":0};
-  constructor(private route:ActivatedRoute,private alumnosService:AlumnosService){
+  constructor(private route:ActivatedRoute,private alumnosService:AlumnosService,private matDialog:MatDialog){
       this.textoBoton=this.route.snapshot.paramMap.get("textoBoton");
   }
   ngOnInit(): void {
@@ -46,8 +48,8 @@ export class AltaComponent implements OnInit{
         this.alumno={nombre:value.nombre,curso:value.curso,email:value.email,nota:parseFloat(value.nota)};
         this.alumnosService.altaAlumno(this.alumno).subscribe(
         {
-          next: (data)=>alert(`${this.alumno.nombre} se ha dado de alta`),
-          error: error=>alert("Email repetido"),
+          next: (data)=>this.matDialog.open(Dialogo,{data:{mensaje:"Alumno agregado"}}),
+          error: error=>this.matDialog.open(Dialogo,{data:{mensaje:`${value.email} ya existe. No se añadió`}}),
           complete: ()=>this.alumno={"nombre":"","email":"","curso":"","nota":0}
         }
       );
@@ -57,13 +59,5 @@ export class AltaComponent implements OnInit{
 
 
   }
-  favoritos(alumno:Alumno){
-    let favoritos:Alumno[]=JSON.parse(sessionStorage.getItem("favoritos"));
-    if(favoritos.some(al=>al.email==alumno.email)){
-      favoritos=favoritos.filter(al=>al.email!=alumno.email);
-    }else{
-      favoritos.push(alumno);
-    }
-    sessionStorage.setItem("favoritos",JSON.stringify(favoritos));
-  }
+
 }
