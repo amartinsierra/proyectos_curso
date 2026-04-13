@@ -88,6 +88,12 @@
     },
     {
       "path": "./projects/12_signal_form/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/13_alumnos/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/13_alumnos/tsconfig.spec.json"
     }
   ]
 }
