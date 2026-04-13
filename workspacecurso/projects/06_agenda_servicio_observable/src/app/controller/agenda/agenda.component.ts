@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { Contacto } from '../../model/Contacto';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -13,11 +13,11 @@ import { AgendaService } from '../../services/agenda-service';
 export class AgendaComponent {
   contactos=signal<Contacto[]>([]);
   contacto=signal<Contacto>({"nombre":"","telefono":"","edad":0});
-  show=signal<boolean>(false);
+  show=computed(()=>this.contactos().length>0);
   mensaje=signal<string>("");
 
   constructor(private agendaService:AgendaService){
-
+      effect(()=>console.log(this.contacto().nombre))
   }
 
   agregarContacto():void{
@@ -35,7 +35,6 @@ export class AgendaComponent {
     this.agendaService.obtenerContactos().subscribe(
       data=>{
           this.contactos.set(data);
-          this.show.set(true);
       }
     )
   }
