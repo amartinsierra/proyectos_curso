@@ -4,7 +4,7 @@
       Usuario:<input type="text" formControlName="usuario">
     </label>
     <br>
-    @if(formClients.get("usuario")&&error){
+    @if(formClients.get("usuario").errors&&error){
       @if(formClients.get("usuario").hasError("required")){
         <span >El nombre de usuario es obligatorio.</span>
       }
@@ -13,14 +13,38 @@
     <label>
       Password:<input type="password" formControlName="password">
     </label>
+    @if(formClients.get("password").errors&&error){
+      @if(formClients.get("password").hasError("required")){
+        <span >La contraseña es obligatoria.</span>
+      }
+      @if(formClients.get("password").hasError("minlength")){
+        <span >La contraseña debe tener al menos 6 caracteres.</span>
+      }
+    }
     <br>
     <label>
       Email:<input type="text" formControlName="email">
     </label>
+    @if(formClients.get("email").errors&&error){
+      @if(formClients.get("email").hasError("required")){
+        <span >El email es obligatorio.</span>
+      }
+      @if(formClients.get("email").hasError("email")){
+        <span >Email no válido.</span>
+      }
+    }
     <br>
     <label>
       Teléfono:<input type="text" formControlName="telefono">
     </label>
+    @if(formClients.get("telefono").errors&&error){
+      @if(formClients.get("telefono").hasError("required")){
+        <span >El teléfono es obligatorio.</span>
+      }
+      @if(formClients.get("telefono").hasError("pattern")){
+        <span >Teléfono no válido.</span>
+      }
+    }
     <br>
     <label>
       Uso profesional:<input type="checkbox" formControlName="profesional">
@@ -29,6 +53,14 @@
     <label>
       Instagram:<input type="text" formControlName="instagram">
     </label>
+    @if(formClients.get("instagram").errors&&error){
+      @if(formClients.get("instagram").hasError("required")){
+        <span >Tener cuenta de instagram es obligatorio para uso profesional.</span>
+      }
+       @if(formClients.get("instagram").hasError("invalido")){
+        <span >{{formClients.get("instagram").errors["mensaje"]}}</span>
+      }
+    }
     <br>
 
     <input type="submit" value="Registrar">
