@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Alumno } from '../../model/Alumno';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatSort, MatSortHeader, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
   imports: [CommonModule,FormsModule,RouterModule,MatDialogModule,MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSortHeader,
     MatButtonModule,
     MatInputModule],
   templateUrl: './favoritos.component.html',
@@ -33,5 +34,6 @@ export class FavoritosComponent implements OnInit,AfterViewInit{
 
   ngOnInit(): void {
     this.dataSource.data=JSON.parse(sessionStorage.getItem("favoritos"));
+
   }
 }
