@@ -100,6 +100,12 @@
     },
     {
       "path": "./projects/14_paises_anidados/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/15_paises_anidados_angular21/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/15_paises_anidados_angular21/tsconfig.spec.json"
     }
   ]
 }
