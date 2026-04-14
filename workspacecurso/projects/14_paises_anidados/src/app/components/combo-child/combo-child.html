@@ -1,0 +1,6 @@
+<select class="form-control" (change)="seleccionContinente($event)">
+    <option>-Continente-</option>
+    @for(c of continentes(); track c){
+        <option  value="{{c}}">{{c}}</option>
+    }
+  </select>

@@ -94,6 +94,12 @@
     },
     {
       "path": "./projects/13_alumnos/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/14_paises_anidados/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/14_paises_anidados/tsconfig.spec.json"
     }
   ]
 }

@@ -737,6 +737,67 @@
           "builder": "@angular/build:unit-test"
         }
       }
+    },
+    "14_paises_anidados": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/14_paises_anidados",
+      "sourceRoot": "projects/14_paises_anidados/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/14_paises_anidados/src/main.ts",
+            "tsConfig": "projects/14_paises_anidados/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/14_paises_anidados/public"
+              }
+            ],
+            "styles": ["projects/14_paises_anidados/src/styles.css"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "14_paises_anidados:build:production"
+            },
+            "development": {
+              "buildTarget": "14_paises_anidados:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
     }
   }
 }
